@@ -1,0 +1,101 @@
+*astuce terminal:
+    ls : voir les fichier dans le dossier ouo on se trouve
+
+*astuce champs possibles:
+        Types de champs possibles :
+        Voici quelques types de champs courants que tu peux utiliser avec make:entity :
+
+        string : Pour des chaînes de texte (ex. name, email).
+        integer : Pour des nombres entiers (ex. age, quantity).
+        boolean : Pour des valeurs booléennes (true ou false).
+        text : Pour de longues chaînes de texte (ex. description, content).
+        date : Pour une date sans heure.
+        datetime : Pour une date avec une heure.
+        float : Pour les nombres décimaux.
+        array : Pour un tableau (souvent utilisé pour des données comme une liste d'éléments).
+        decimal : Pour des valeurs décimales avec une précision définie (souvent utilisé pour des montants financiers).
+
+*creation dossier nom_du_project
+Dedans dossier vhost
+puis fichier vhost.conf
+Creez fichier Dockerfile (racine de Docker)
+puis fichier compose.yml
+
+*buildons! 
+    docker build -t container_name .  (ne pas oublier espace . puis prendre pour service le container_name (future nom sur docker) )
+    docker-compose up -d (lancement sur Docker Deskop)
+    normalement phpmyadmin marche puis normal que not found pour website symfony pas encore installer
+
+partie pour le bash commande :
+    docker exec -it (container_name du www) /bin/bash
+    puis nous somme dans le bahs on doit voir root@...
+
+installer symfony:
+    composer create-project symfony/skeleton:"7.2.x" (nom du dossier qu'on veux mettre)
+    puis cd (nom du dossier creer)
+    composer require webapp (ajouter une dépendance à ton projet)
+
+modifier .env
+    DATABASE_URL="mysql://root:@theatredatabase:3306/app?serverVersion=8.0.32&charset=utf8mb4"
+
+Partie USER:
+    Bien dans le dossier ou symfony est installer
+    php bin/console make:User
+
+
+
+entrée de ouf
+
+php bin/console make:migration
+puis 
+php bin/console doctrine:migrations:migrate
+
+les roles:
+    php bin/console make:entity User
+    il va dire que sa existe deja donc dedans on va creer :
+    ajout du nom, prenom, age     *
+
+
+continuons sur le LOGIN, REGISTER et le HOME
+
+ # LOGIN
+
+php bin/console make:security:form-login 
+
+ created: src/Controller/SecurityController.php
+ created: templates/security/login.html.twig
+ updated: config/packages/security.yaml
+
+
+ **
+
+ # REGISTER
+
+php bin/console make:registration-form
+
+ updated: src/Entity/User.php
+ created: src/Form/RegistrationFormType.php
+ created: src/Controller/RegistrationController.php
+ created: templates/registration/register.html.twig
+
+ installer se qu'il demande moi par exemple :
+ composer require symfonycasts/verify-email-bundle 
+
+POUR RegistrationController.php retirer le return $security environ ligne 54
+et ajouetr a la place
+            $security->login($user);
+            return $this->redirectToRoute('app_home');
+
+
+php bin/console make:controller home
+
+pour le formulaire ne pas oublier de rajouter les entity qu'on as mit:
+dans RegistrationFormType.php
+
+exemple :
+            ->add('nom')
+            ->add('prenom')
+            ->add('age')
+            ->add('email')
+ 
+ 

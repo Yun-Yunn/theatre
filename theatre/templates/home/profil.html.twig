@@ -1,0 +1,18 @@
+{% extends "base.html.twig" %}
+{% block body %}
+
+	<h1>{{utillisateur.email}}</h1>
+
+	mes
+	<a href="{{ path('eventbyuser') }}">
+		Evenements</a>
+
+	{% if evenements is empty %}
+		{% for evenement in evenements %}
+			<p>{{evenement.titre}}</p>
+
+		{% endfor %}
+
+	{% endif %}
+
+{% endblock %}

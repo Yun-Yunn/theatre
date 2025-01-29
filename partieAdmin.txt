@@ -1,0 +1,60 @@
+Installation easyAdmin : 
+composer require easycorp/easyadmin-bundle
+
+php bin/console make:admin:dashboard
+
+bien mettre le chemin en decommentant return $this->render('admin/dashboard.html.twig');
+et commenter return parent::index();
+*si probleme ne pas hesiter a php bin/console cache:clear*
+
+php bin/console make:admin:crud
+
+
+Coté client on retire admin:
+
+php bin/console make:crud Evenement
+
+
+
+Attribution relations
+
+php bin/console make:entity Evenement
+
+ Your entity already exists! So let's add some new fields!
+
+ New property name (press <return> to stop adding fields):
+ > Category
+
+ Field type (enter ? to see all types) [string]:
+ > relation
+
+ What class should this entity be related to?:
+ > Category
+
+  ------------ --------------------------------------------------------------------------
+  ManyToOne    Each Evenement relates to (has) one Category.
+               Each Category can relate to (can have) many Evenement objects.
+
+  OneToMany    Each Evenement can relate to (can have) many Category objects.
+               Each Category relates to (has) one Evenement.
+
+  ManyToMany   Each Evenement can relate to (can have) many Category objects.
+               Each Category can also relate to (can also have) many Evenement objects.
+
+  OneToOne     Each Evenement relates to (has) exactly one Category.
+               Each Category also relates to (has) exactly one Evenement.
+ ------------ --------------------------------------------------------------------------
+
+ Relation type? [ManyToOne, OneToMany, ManyToMany, OneToOne]:
+ > ManyToOne
+
+ Is the Evenement.Category property allowed to be null (nullable)? (yes/no) [yes]:
+ >
+
+ Do you want to add a new property to Category so that you can access/update Evenement objects from it - e.g. $category->getEvenements()? (yes/no) [yes]:
+ >
+
+ A new property will also be added to the Category class so that you can access the related Evenement objects from it.
+
+ New field name inside Category [evenements]:
+ >

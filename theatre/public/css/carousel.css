@@ -1,0 +1,76 @@
+/* Conteneur principal du carrousel */
+.carousel {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Masquer les boutons radio */
+.carousel input {
+    display: none;
+}
+
+/* Conteneur des slides */
+.slides {
+    display: flex;
+    width: 300%;
+    height: 100vh;
+    transition: transform 1s ease-in-out;
+}
+
+/* Chaque slide prend toute la largeur de l'écran */
+.slide {
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    flex-shrink: 0;
+}
+
+/* Appliquer les images */
+.slide:nth-child(1) { background-image: url('../img/theatrepic1.jpg'); }
+.slide:nth-child(2) { background-image: url('../img/theatrepic2.jpeg'); }
+.slide:nth-child(3) { background-image: url('../img/theatrepic3.jpeg'); }
+
+/* Défilement des images */
+#slide1:checked ~ .slides { transform: translateX(0); }
+#slide2:checked ~ .slides { transform: translateX(-100vw); }
+#slide3:checked ~ .slides { transform: translateX(-200vw); }
+
+/* Style de la navigation (les boutons de navigation) */
+.nav {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10; /* Mets les flèches au-dessus du carrousel */
+}
+
+.arrow {
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+/* Effet au survol des flèches */
+.arrow:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+/* Flèche gauche */
+.left {
+    margin-left: 20px;
+}
+
+/* Flèche droite */
+.right {
+    margin-right: 20px;
+}

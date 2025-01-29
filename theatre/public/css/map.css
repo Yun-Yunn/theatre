@@ -1,0 +1,6 @@
+#map {
+    height: 500px;  /* Ajuste la hauteur de la carte */
+    width: 100%;    /* La carte prend toute la largeur disponible */
+    margin: 20px auto; /* Centrer la carte */
+    
+}

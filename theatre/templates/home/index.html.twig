@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<div
+		class="carousel">
+		<!-- Les inputs radio pour changer d'image -->
+		<input type="radio" name="carousel" id="slide1" checked>
+		<input type="radio" name="carousel" id="slide2">
+		<input
+		type="radio" name="carousel" id="slide3">
+
+		<!-- Conteneur des slides -->
+		<div class="slides">
+			<div class="slide"></div>
+			<div class="slide"></div>
+			<div class="slide"></div>
+		</div>
+
+		<!-- Navigation avec les flèches -->
+		<div
+			class="nav">
+			<!-- Flèche gauche -->
+			<div class="arrow left" onclick="moveSlide(-1)">&#10094;</div>
+
+			<!-- Flèche droite -->
+			<div class="arrow right" onclick="moveSlide(1)">&#10095;</div>
+		</div>
+	</div>
+	<!-- Section des cartes cadeaux -->
+	<div class="gift-cards">
+		<h2>Nos Cartes Cadeaux</h2>
+		<div class="cards-container">
+			<div class="gift-card">
+				<img src="{{ asset('img/cartecadeau.png') }}" alt="Carte cadeau 10€">
+				<p>Carte à 10€</p>
+			</div>
+			<div class="gift-card">
+				<img src="{{ asset('img/cartecadeau.png') }}" alt="Carte cadeau 20€">
+				<p>Carte à 20€</p>
+			</div>
+			<div class="gift-card">
+				<img src="{{ asset('img/cartecadeau.png') }}" alt="Carte cadeau 50€">
+				<p>Carte à 50€</p>
+			</div>
+		</div>
+	</div>
+
+	<!-- Conteneur pour la carte -->
+	<div class="container">
+		<div id="map"></div>
+	</div>
+
+{% endblock %}

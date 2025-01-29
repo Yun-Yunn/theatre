@@ -1,0 +1,44 @@
+/* Styles de la section des cartes cadeaux */
+.gift-cards {
+    text-align: center;
+    padding: 50px 0;
+    background-color: #EB6864;
+}
+
+.gift-cards h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.cards-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Espace entre les cartes */
+}
+
+.gift-card {
+    width: 250px;
+    padding: 20px;
+    background-color: white;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.gift-card:hover {
+    transform: translateY(-10px); /* Effet au survol de la carte */
+}
+
+.gift-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px; /* Arrondir légèrement les coins de l'image */
+}
+
+.gift-card p {
+    font-size: 1.1rem;
+    margin-top: 10px;
+    font-weight: bold;
+}

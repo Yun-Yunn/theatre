@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/linearicons/2.0.0/style.min.css">
+    <link rel="stylesheet" href="{{ asset('css/form-style.css') }}"> <!-- Si tu utilises un fichier CSS personnalisé -->
+{% endblock %}
+
+{% block body %}
+    <div class="wrapper">
+        <div class="inner">
+            <img src="{{ asset('img/image-1.png') }}" alt="" class="image-1">
+            <form method="post">
+                <h3>Création d'un nouveau compte</h3>
+                
+                {% for flash_error in app.flashes('verify_email_error') %}
+                    <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+                {% endfor %}
+
+                <!-- Nom Input -->
+                <div class="form-holder">
+                    <span class="lnr lnr-user"></span>
+                    {{ form_row(registrationForm.nom, { 'attr': { 'class': 'form-control', 'placeholder': 'Nom' } }) }}
+                </div>
+
+                <!-- Prénom Input -->
+                <div class="form-holder">
+                    <span class="lnr lnr-user"></span>
+                    {{ form_row(registrationForm.prenom, { 'attr': { 'class': 'form-control', 'placeholder': 'Prénom' } }) }}
+                </div>
+
+                <!-- Age Input -->
+                <div class="form-holder">
+                    <span class="lnr lnr-calendar-full"></span>
+                    {{ form_row(registrationForm.age, { 'attr': { 'class': 'form-control', 'placeholder': 'Age' } }) }}
+                </div>
+
+                <!-- Email Input -->
+                <div class="form-holder">
+                    <span class="lnr lnr-envelope"></span>
+                    {{ form_row(registrationForm.email, { 'attr': { 'class': 'form-control', 'placeholder': 'Email Address' } }) }}
+                </div>
+
+                <!-- Password Input -->
+                <div class="form-holder">
+                    <span class="lnr lnr-lock"></span>
+                    {{ form_row(registrationForm.plainPassword, {
+                        'label': 'Password',
+                        'attr': { 'class': 'form-control', 'placeholder': 'Password' }
+                    }) }}
+                </div>
+
+
+                <!-- Agree to Terms -->
+                <div class="form-holder">
+                    <label for="agreeTerms">
+                        {{ form_widget(registrationForm.agreeTerms) }} I agree to the terms and conditions
+                    </label>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit">
+                    <span>Register</span>
+                </button>
+            </form>
+            <img src="{{ asset('img/image-2.png') }}" alt="" class="image-2">
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
+{% endblock %}
