@@ -58,3 +58,44 @@ php bin/console make:entity Evenement
 
  New field name inside Category [evenements]:
  >
+
+
+
+
+ bouton Valide evenement:
+
+ PS C:\Users\Yun Yun\Desktop\theatre\theatre> php bin/console make:entity Evenement
+ Your entity already exists! So let's add some new fields!
+
+ New property name (press <return> to stop adding fields):
+ > valide
+
+ Field type (enter ? to see all types) [string]:
+ > boolean
+
+ Can this field be null in the database (nullable) (yes/no) [no]:
+ > 
+
+ updated: src/Entity/Evenement.php
+
+ Add another property? Enter the property name (or press <return> to stop adding fields):
+ >
+
+
+ 
+  Success! 
+ 
+
+ Next: When you're ready, create a migration with php bin/console make:migration
+
+ donc nous creons une function :
+     public function findvalideEvent($value)
+    {
+        return $this->createQueryBuilder('e')
+            ->andwhere('e.valide = :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+

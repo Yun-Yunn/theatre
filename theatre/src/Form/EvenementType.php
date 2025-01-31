@@ -8,6 +8,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class EvenementType extends AbstractType
 {
@@ -21,6 +22,10 @@ class EvenementType extends AbstractType
             ->add('nbPlace')
             ->add('prix')
             ->add('description')
+            ->add('avatar', FileType::class, [
+                "data_class" => null,
+                'required' => false
+            ])
             ->add('Category', EntityType::class, [
                 'class' => Category::class,
                 'choice_label' => 'nomCategory', // Affiche le champ "nomCategory" dans le menu déroulant

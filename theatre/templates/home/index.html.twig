@@ -1,6 +1,42 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+	<link
+	rel="stylesheet" href="{{ asset('css/style.css') }}">
+
+	<!-- Conteneur pour les cartes -->
+	<div class="cards-container">
+		{% for evenement in eventsvalides.items %}
+			<div class="card">
+				{% if evenement.avatar is null %}
+					<img src="{{asset('img/poulet.png')}}" alt="Image par défaut" style="width:100%"/>
+				{% else %}
+					<img src="{{ asset('img/' ~ evenement.avatar) }}" style="width:100%" alt="Avatar">
+				{% endif %}
+				<div class="container">
+					<p>{{ evenement.description }}</p>
+					<p>{{ evenement.prix }}
+						euros</p>
+					{# Affiche le prix de l'événement #}
+					<p>Il reste
+						{{ evenement.remainingPlaces }}
+						places disponibles.</p>
+					{# Affiche le nombre de places restantes #}
+					<div>
+						<a href="{{path('reservation', {'id': evenement.id})}}">Réserver</a>
+					</div>
+
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+
+	<div class="pagination">
+		{{ knp_pagination_render(eventsvalides) }}
+		<!-- Affichage de la pagination -->
+	</div>
+
+	<!-- Section Carousel -->
 	<div
 		class="carousel">
 		<!-- Les inputs radio pour changer d'image -->
@@ -26,6 +62,7 @@
 			<div class="arrow right" onclick="moveSlide(1)">&#10095;</div>
 		</div>
 	</div>
+
 	<!-- Section des cartes cadeaux -->
 	<div class="gift-cards">
 		<h2>Nos Cartes Cadeaux</h2>
@@ -33,19 +70,22 @@
 			<div class="gift-card">
 				<img src="{{ asset('img/cartecadeau.png') }}" alt="Carte cadeau 10€">
 				<p>Carte à 10€</p>
+				<button onclick="addToCart(10)">Ajouter au panier</button>
 			</div>
 			<div class="gift-card">
 				<img src="{{ asset('img/cartecadeau.png') }}" alt="Carte cadeau 20€">
 				<p>Carte à 20€</p>
+				<button onclick="addToCart(20)">Ajouter au panier</button>
 			</div>
 			<div class="gift-card">
 				<img src="{{ asset('img/cartecadeau.png') }}" alt="Carte cadeau 50€">
 				<p>Carte à 50€</p>
+				<button onclick="addToCart(50)">Ajouter au panier</button>
 			</div>
 		</div>
 	</div>
 
-	<!-- Conteneur pour la carte -->
+	<!-- Section de la carte Google -->
 	<div class="container">
 		<div id="map"></div>
 	</div>

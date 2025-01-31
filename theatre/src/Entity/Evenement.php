@@ -34,6 +34,15 @@ class Evenement
     #[ORM\ManyToOne(inversedBy: 'evenements')]
     private ?User $user = null;
 
+    #[ORM\Column]
+    private ?bool $valide = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $avatar = null;
+
+    #[ORM\Column(type: 'integer')]
+    private $remainingPlaces;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -120,6 +129,41 @@ class Evenement
     {
         $this->user = $user;
 
+        return $this;
+    }
+
+    public function isValide(): ?bool
+    {
+        return $this->valide;
+    }
+
+    public function setValide(bool $valide): static
+    {
+        $this->valide = $valide;
+
+        return $this;
+    }
+
+    public function getAvatar(): ?string
+    {
+        return $this->avatar;
+    }
+
+    public function setAvatar(string $avatar): static
+    {
+        $this->avatar = $avatar;
+
+        return $this;
+    }
+    public function getRemainingPlaces(): int
+    {
+        return $this->remainingPlaces;
+    }
+
+    // Setter pour remainingPlaces
+    public function setRemainingPlaces(int $remainingPlaces): self
+    {
+        $this->remainingPlaces = $remainingPlaces;
         return $this;
     }
 }

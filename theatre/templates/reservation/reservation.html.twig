@@ -1,0 +1,43 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <!-- Contenu de la page de réservation -->
+    <h1>Réservation pour {{ evenement.titre }}</h1>
+    <p>Prix: {{ evenement.prix }} €</p>
+
+    <!-- Bouton de paiement -->
+    <button id="checkout-button">Payer avec Stripe</button>
+
+    <!-- Inclure le script Stripe -->
+    <script src="https://js.stripe.com/v3/"></script>
+
+    <script>
+        // Récupérer la clé publique Stripe passée par le contrôleur
+        var stripe = Stripe("{{ stripe_public_key }}");
+
+        // Sélectionner le bouton de paiement
+        var checkoutButton = document.getElementById('checkout-button');
+
+        checkoutButton.addEventListener('click', function () {
+            // Faire une requête pour créer la session de paiement sur le serveur
+            fetch('/stripe/checkout/{{ evenement.id }}', {
+                method: 'POST'
+            })
+            .then(function (response) {
+                return response.json();  // La réponse contiendra l'ID de session
+            })
+            .then(function (sessionId) {
+                // Rediriger vers Stripe Checkout avec l'ID de la session
+                return stripe.redirectToCheckout({ sessionId: sessionId });
+            })
+            .then(function (result) {
+                if (result.error) {
+                    alert(result.error.message);  // Afficher l'erreur si elle existe
+                }
+            })
+            .catch(function (error) {
+                console.error("Erreur lors du paiement:", error);
+            });
+        });
+    </script>
+{% endblock %}

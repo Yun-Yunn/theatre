@@ -1,0 +1,91 @@
+/* Conteneur de la carte de réservation */
+.productcard {
+    width: 320px; /* Largeur de la carte */
+    background-color: #fff; /* Fond blanc */
+    border-radius: 12px; /* Coins arrondis */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Ombre légère */
+    text-align: center; /* Centrage du texte */
+    padding: 20px; /* Espacement interne */
+    margin: 30px auto; /* Centrer la carte horizontalement avec un peu d'espace en haut et en bas */
+    border: 1px solid #eee; /* Bordure légère */
+    transition: transform 0.3s ease-in-out; /* Effet de zoom au survol */
+  }
+  
+  /* Conteneur pour tout le contenu à l'intérieur de la carte */
+  .card-content {
+    display: flex;
+    flex-direction: column; /* Organiser les éléments de manière verticale */
+    justify-content: center; /* Centrer les éléments à l'intérieur */
+    align-items: center; /* Centrer le contenu horizontalement */
+  }
+  
+
+  /* Style de l'image */
+  .productcard img {
+    width: 100%; /* L'image prend toute la largeur */
+    height: 200px; /* Hauteur fixe de l'image */
+    object-fit: cover; /* Couvre l'espace sans déformer l'image */
+    border-radius: 10px 10px 0 0; /* Coins arrondis en haut de l'image */
+    margin-bottom: 15px; /* Espacement sous l'image */
+  }
+  
+  /* Style du titre */
+  .productcard h1 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #333; /* Couleur sombre pour le titre */
+    margin: 10px 0;
+  }
+  
+  /* Style du prix */
+  .productcard .price {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #28a745; /* Couleur verte pour le prix */
+    margin-bottom: 15px; /* Espacement sous le prix */
+  }
+  
+  /* Style des champs de saisie */
+  .productcard input {
+    width: 70px; /* Largeur du champ de saisie */
+    padding: 8px;
+    font-size: 1rem;
+    text-align: center;
+    border-radius: 5px;
+    border: 1px solid #ddd; /* Bordure grise */
+    margin-top: 10px;
+    margin-bottom: 15px; /* Espacement sous le champ */
+    transition: border-color 0.3s ease; /* Transition au survol */
+  }
+  
+  /* Style du champ de saisie au focus */
+  .productcard input:focus {
+    border-color: #007bff; /* Bordure bleue au focus */
+    outline: none; /* Enlever l'encadrement par défaut */
+  }
+  
+  /* Style du bouton de réservation */
+  .productcard button {
+    background-color: #007bff; /* Bleu de fond */
+    color: white; /* Texte blanc */
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease; /* Transition sur le fond */
+  }
+  
+  /* Changer la couleur du bouton au survol */
+  .productcard button:hover {
+    background-color: #0056b3; /* Fond plus foncé au survol */
+  }
+  
+  /* Style du label pour le prix total */
+  #prixTotalLabel {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #333;
+    margin-top: 10px;
+  }
+  
